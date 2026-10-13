@@ -1,0 +1,203 @@
+:root {
+  --indigo: #1E3A5F;
+  --ink: #172033;
+  --paper: #F3F5F8;
+  --white: #FFFFFF;
+  --line: #D5DBE5;
+  --muted: #5B667A;
+  --accent: #D9A21B;
+  --error: #B3261E;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+img, svg { max-width: 100%; }
+
+:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
+.site-header :focus-visible { outline-color: #fff; }
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: #fff; padding: .5rem 1rem; z-index: 20;
+}
+.skip:focus { left: 0; }
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.25rem; height: 60px;
+  background: var(--indigo); color: #fff;
+  position: sticky; top: 0; z-index: 10;
+}
+.brand {
+  font-weight: 700; font-size: 1.35rem; letter-spacing: -.02em;
+  text-decoration: none;
+}
+.nav { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link, .cart-link { text-decoration: none; font-size: .95rem; }
+.cart-link { display: inline-flex; align-items: center; gap: .5rem; }
+.cart-count {
+  min-width: 1.5rem; height: 1.5rem; padding: 0 .4rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; background: var(--accent); color: var(--ink);
+  font-weight: 700; font-size: .85rem;
+}
+
+/* ---------- Layout ---------- */
+main { outline: none; }
+.page { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+h1 { font-size: 1.75rem; letter-spacing: -.02em; margin: 0 0 1.25rem; line-height: 1.25; }
+h2 { margin: 0; }
+.muted { color: var(--muted); }
+.price { font-weight: 700; margin: .25rem 0 0; }
+
+.site-footer {
+  text-align: center; color: var(--muted); font-size: .85rem;
+  padding: 1.5rem 1rem 2.5rem; border-top: 1px solid var(--line);
+}
+
+/* ---------- Product grid ---------- */
+.grid {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+.card {
+  display: block; text-decoration: none; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.card:hover { border-color: var(--indigo); }
+.card-body { padding: .85rem 1rem 1rem; }
+.card h2 { font-size: 1rem; font-weight: 500; }
+
+.thumb {
+  aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+.thumb.sm { width: 64px; height: 64px; aspect-ratio: auto; font-size: 1.75rem; border-radius: 6px; flex: none; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.chip {
+  font: inherit; font-size: .9rem; padding: .45rem 1rem; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: 999px; background: var(--white); color: var(--ink);
+}
+.chip.on { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+
+/* ---------- Product detail ---------- */
+.back { display: inline-block; margin-bottom: 1rem; }
+.product-layout { display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; align-items: start; }
+.product-layout .thumb { border-radius: var(--radius); font-size: 7rem; }
+.desc { color: var(--muted); margin: .75rem 0 1.5rem; }
+
+.field { margin-bottom: 1.1rem; }
+.field label, legend { display: block; font-weight: 500; margin-bottom: .4rem; padding: 0; }
+input[type="text"], input[type="tel"], select {
+  font: inherit; width: 100%; padding: .7rem .8rem;
+  border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--white); color: var(--ink);
+}
+input[aria-invalid="true"] { border-color: var(--error); }
+fieldset { border: 0; margin: 0 0 1.1rem; padding: 0; }
+.hint { color: var(--muted); font-size: .85rem; margin: .3rem 0 0; }
+.error { color: var(--error); font-size: .9rem; margin: .35rem 0 0; font-weight: 500; }
+.banner { background: #FBE9E7; color: var(--error); padding: .7rem 1rem; border-radius: var(--radius); margin: 0 0 1rem; }
+
+.sizes { display: flex; flex-wrap: wrap; gap: .5rem; }
+.size-opt { position: relative; }
+.size-opt input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.size-opt span {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 52px; height: 46px; padding: 0 .9rem;
+  border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--white);
+}
+.size-opt input:checked + span { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.size-opt input:focus-visible + span { outline: 3px solid var(--indigo); outline-offset: 2px; }
+
+.btn-primary {
+  display: inline-block; font: inherit; font-weight: 700; text-decoration: none; text-align: center;
+  background: var(--accent); color: var(--ink); border: 0; border-radius: var(--radius);
+  padding: .9rem 1.5rem; cursor: pointer; min-height: 48px;
+}
+.btn-primary:hover { filter: brightness(.95); }
+.btn-primary.block { width: 100%; }
+
+/* ---------- Cart ---------- */
+.rows { list-style: none; margin: 0; padding: 0; }
+.row {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.row-info { flex: 1; min-width: 0; }
+.row-info strong { display: block; font-weight: 500; }
+.row-info span { color: var(--muted); font-size: .9rem; }
+.qty { display: inline-flex; align-items: center; gap: .5rem; }
+.qty-btn {
+  width: 36px; height: 36px; font: inherit; font-size: 1.1rem; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--white);
+}
+.row-price { min-width: 92px; text-align: right; font-weight: 500; }
+.rm-text { font: inherit; background: none; border: 0; color: var(--error); cursor: pointer; text-decoration: underline; padding: .5rem; }
+.cart-total { display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0; font-size: 1.15rem; font-weight: 700; }
+.cart-actions { display: flex; justify-content: flex-end; }
+
+/* ---------- Checkout / done ---------- */
+.checkout { display: grid; gap: 2rem; grid-template-columns: 3fr 2fr; align-items: start; }
+.summary { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
+.summary h2 { font-size: 1.05rem; margin-bottom: .75rem; }
+.summary ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+.summary li { display: flex; justify-content: space-between; gap: 1rem; padding: .3rem 0; font-size: .95rem; }
+.summary .sum-total { display: flex; justify-content: space-between; font-weight: 700; border-top: 1px solid var(--line); padding-top: .75rem; }
+.done { max-width: 560px; }
+
+/* ---------- Toast ---------- */
+#toast {
+  position: fixed; left: 50%; bottom: 1.25rem; z-index: 30;
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--ink); color: #fff; padding: .8rem 1.25rem; border-radius: var(--radius);
+  max-width: calc(100% - 2rem); transition: opacity .2s, transform .2s;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+#toast a { color: var(--accent); font-weight: 700; margin-left: .75rem; }
+
+/* =========================================================
+   PHIÊN BẢN A (mặc định) – có lỗi usability CỐ Ý để test
+   ========================================================= */
+.v-a .cart-link { font-size: .72rem; color: #7E93B3; }          /* nhỏ, tương phản thấp */
+.v-a .cart-count { background: none; color: #7E93B3; min-width: 0; height: auto; font-weight: 400; padding: 0; }
+.v-a .card h2 { font-size: .85rem; font-weight: 400; color: var(--muted); }
+.v-a .price { font-size: .8rem; font-weight: 400; color: var(--muted); }
+.v-a .back { font-size: 1.1rem; color: #9AA3B2; text-decoration: none; }
+.v-a .btn-add {
+  font: inherit; font-size: .8rem; padding: .4rem .9rem; border: 0; border-radius: 4px;
+  background: #DDE2EA; color: #8A93A3; cursor: pointer;          /* nút nhỏ, xám, nhãn "OK" */
+}
+.v-a .rm { font: inherit; font-size: .7rem; background: none; border: 0; color: #B7BECB; cursor: pointer; padding: 0; }
+.v-a .btn-next { font-size: .8rem; color: #8A93A3; }
+.v-a .qty { font-size: .85rem; color: var(--muted); }
+.v-a .btn-send {
+  font: inherit; font-size: .8rem; padding: .4rem .9rem; border: 0; border-radius: 4px;
+  background: #DDE2EA; color: #8A93A3; cursor: pointer;
+}
+.v-a input[type="text"], .v-a input[type="tel"], .v-a select { padding: .45rem .6rem; font-size: .85rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .product-layout, .checkout { grid-template-columns: 1fr; }
+  .row { flex-wrap: wrap; }
+  .row-price { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #toast { transition: none; }
+}
